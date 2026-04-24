@@ -221,7 +221,6 @@
 
 
 
-
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, ChevronDown, MessageCircle } from "lucide-react";
@@ -229,6 +228,7 @@ import { services, categories } from "@/data/services";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
 
+// Reordered for mapping logic
 const navLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
@@ -332,7 +332,15 @@ export function Navbar() {
             Contact
           </NavLink>
 
-          {/* WhatsApp Button */}
+          {/* Book Appointment Button */}
+          <Link
+            to="/contact"
+            className="ml-3 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-all hover:shadow-[var(--shadow-elegant)] hover:-translate-y-0.5"
+          >
+            Book Appointment
+          </Link>
+
+          {/* WhatsApp Button - Now on the right */}
           <a
             href={whatsappUrl}
             target="_blank"
@@ -342,13 +350,6 @@ export function Navbar() {
             <MessageCircle className="h-4 w-4 fill-current" />
             WhatsApp
           </a>
-
-          <Link
-            to="/contact"
-            className="ml-2 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-all hover:shadow-[var(--shadow-elegant)] hover:-translate-y-0.5"
-          >
-            Book Appointment
-          </Link>
         </nav>
 
         <button
@@ -421,24 +422,24 @@ export function Navbar() {
               </Link>
             ))}
 
-            {/* Mobile WhatsApp Button */}
+            {/* Mobile Buttons Stack */}
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className="mt-4 block rounded-full bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+            >
+              Book Appointment
+            </Link>
+
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-sm"
+              className="mt-2 flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white shadow-sm"
             >
               <MessageCircle className="h-4 w-4 fill-current" />
               Chat on WhatsApp
             </a>
-
-            <Link
-              to="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 block rounded-full bg-primary px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
-            >
-              Book Appointment
-            </Link>
           </div>
         </div>
       )}
