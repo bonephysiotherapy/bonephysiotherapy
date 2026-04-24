@@ -17,13 +17,18 @@
 
 //   return (
 //     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-lg">
-//       <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-//         <Link to="/" className="flex items-center group" aria-label="Bone Physiotherapy Clinic">
+//       <div className="mx-auto flex h-28 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        
+//         {/* Logo and Tagline - Scaled to match width */}
+//         <Link to="/" className="flex flex-col items-center group py-2" aria-label="Bone Physiotherapy Clinic">
 //           <img
 //             src={logo}
 //             alt="Bone Physiotherapy Clinic logo"
 //             className="h-20 w-auto transition-transform group-hover:scale-105"
 //           />
+//           <span className="mt-0.5 text-[9px] font-bold tracking-[0.15em] text-primary uppercase leading-none">
+//             Recover, Rebuild, Return stronger
+//           </span>
 //         </Link>
 
 //         {/* Desktop nav */}
@@ -195,6 +200,9 @@
 
 
 
+
+
+
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
@@ -202,6 +210,7 @@ import { services, categories } from "@/data/services";
 import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
 
+// Updated order in the array for mobile mapping
 const navLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
@@ -216,7 +225,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-lg">
       <div className="mx-auto flex h-28 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         
-        {/* Logo and Tagline - Scaled to match width */}
+        {/* Logo and Tagline */}
         <Link to="/" className="flex flex-col items-center group py-2" aria-label="Bone Physiotherapy Clinic">
           <img
             src={logo}
@@ -228,8 +237,9 @@ export function Navbar() {
           </span>
         </Link>
 
-        {/* Desktop nav */}
+        {/* Desktop nav - Reordered */}
         <nav className="hidden items-center gap-1 lg:flex">
+          {/* 1. Home */}
           <NavLink
             to="/"
             end
@@ -240,7 +250,17 @@ export function Navbar() {
             Home
           </NavLink>
 
-          {/* Services dropdown */}
+          {/* 2. About */}
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-primary ${isActive ? "text-primary" : "text-foreground/80"}`
+            }
+          >
+            About
+          </NavLink>
+
+          {/* 3. Services dropdown */}
           <div
             className="relative"
             onMouseEnter={() => setServicesOpen(true)}
@@ -284,14 +304,7 @@ export function Navbar() {
             </div>
           </div>
 
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              `rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-primary ${isActive ? "text-primary" : "text-foreground/80"}`
-            }
-          >
-            About
-          </NavLink>
+          {/* 4. Contact */}
           <NavLink
             to="/contact"
             className={({ isActive }) =>
@@ -301,6 +314,7 @@ export function Navbar() {
             Contact
           </NavLink>
 
+          {/* 5. Book Appointment */}
           <Link
             to="/contact"
             className="ml-3 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-soft)] transition-all hover:shadow-[var(--shadow-elegant)] hover:-translate-y-0.5"
@@ -318,11 +332,12 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu - Reordered */}
       {open && (
         <div className="lg:hidden border-t border-border bg-background">
           <div className="space-y-1 px-4 py-4">
-            {navLinks.slice(0, 1).map((l) => (
+            {/* Home and About */}
+            {navLinks.slice(0, 2).map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
@@ -333,6 +348,7 @@ export function Navbar() {
               </Link>
             ))}
 
+            {/* Services Dropdown */}
             <details className="group">
               <summary className="flex cursor-pointer list-none items-center justify-between rounded-md px-3 py-2 text-base font-medium text-foreground hover:bg-muted">
                 Services
@@ -368,7 +384,8 @@ export function Navbar() {
               </div>
             </details>
 
-            {navLinks.slice(1).map((l) => (
+            {/* Contact */}
+            {navLinks.slice(2).map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
@@ -379,6 +396,7 @@ export function Navbar() {
               </Link>
             ))}
 
+            {/* Book Appointment */}
             <Link
               to="/contact"
               onClick={() => setOpen(false)}
@@ -392,4 +410,3 @@ export function Navbar() {
     </header>
   );
 }
-
