@@ -9,10 +9,22 @@
 //       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
 //         <div className="grid gap-10 lg:grid-cols-4">
 //           <div>
-//             <Link to="/" className="flex items-center" aria-label="Bone Physiotherapy Clinic">
-//               <img src={logo} alt="Bone Physiotherapy Clinic logo" className="h-24 w-auto" />
+//             {/* Logo and Tagline Stacked */}
+//             <Link 
+//               to="/" 
+//               className="flex flex-col items-start group" 
+//               aria-label="Bone Physiotherapy Clinic"
+//             >
+//               <img 
+//                 src={logo} 
+//                 alt="Bone Physiotherapy Clinic logo" 
+//                 className="h-24 w-auto transition-transform group-hover:scale-105" 
+//               />
+//               <span className="mt-1 text-[9px] font-bold tracking-[0.12em] text-primary uppercase leading-none">
+//                 Recover, Rebuild, Return stronger
+//               </span>
 //             </Link>
-//             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+//             <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
 //               Restoring movement, relieving pain, and helping you live better with expert physiotherapy and orthopaedic care.
 //             </p>
 //           </div>
@@ -20,10 +32,10 @@
 //           <div>
 //             <h4 className="font-heading text-sm font-semibold text-foreground">Quick Links</h4>
 //             <ul className="mt-4 space-y-2 text-sm">
-//               <li><Link to="/" className="text-muted-foreground hover:text-primary">Home</Link></li>
-//               <li><Link to="/services" className="text-muted-foreground hover:text-primary">Services</Link></li>
-//               <li><Link to="/about" className="text-muted-foreground hover:text-primary">About</Link></li>
-//               <li><Link to="/contact" className="text-muted-foreground hover:text-primary">Contact</Link></li>
+//               <li><Link to="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
+//               <li><Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link></li>
+//               <li><Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link></li>
+//               <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
 //             </ul>
 //           </div>
 
@@ -32,7 +44,7 @@
 //             <ul className="mt-4 space-y-2 text-sm">
 //               {services.slice(0, 5).map((s) => (
 //                 <li key={s.slug}>
-//                   <Link to={`/services/${s.slug}`} className="text-muted-foreground hover:text-primary">
+//                   <Link to={`/services/${s.slug}`} className="text-muted-foreground hover:text-primary transition-colors">
 //                     {s.title}
 //                   </Link>
 //                 </li>
@@ -49,13 +61,13 @@
 //               </li>
 //               <li className="flex items-start gap-2">
 //                 <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-//                 <a href="tel:+919390370782" className="hover:text-primary">+91 93903 70782</a>
+//                 <a href="tel:+919390370782" className="hover:text-primary transition-colors">+91 93903 70782</a>
 //               </li>
 //               <li className="flex items-start gap-2">
 //                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-//                 <a href="mailto:bonephysiotherapy@gmail.com" className="hover:text-primary break-all">bonephysiotherapy@gmail.com</a>
+//                 <a href="mailto:bonephysiotherapy@gmail.com" className="hover:text-primary break-all transition-colors">bonephysiotherapy@gmail.com</a>
 //               </li>
-//               <li className="pt-1 text-xs">Mon – Sat: 9:30 AM – 8:30 PM</li>
+//               <li className="pt-1 text-xs font-medium">Mon – Sat: 9:30 AM – 8:30 PM</li>
 //             </ul>
 //           </div>
 //         </div>
@@ -84,11 +96,6 @@
 //     </footer>
 //   );
 // }
-
-
-
-
-
 
 
 
@@ -127,9 +134,10 @@ export function Footer() {
           <div>
             <h4 className="font-heading text-sm font-semibold text-foreground">Quick Links</h4>
             <ul className="mt-4 space-y-2 text-sm">
+              {/* Reordered to match Navbar: Home, About, Services, Contact */}
               <li><Link to="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
-              <li><Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link></li>
               <li><Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link></li>
+              <li><Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link></li>
               <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
@@ -159,6 +167,7 @@ export function Footer() {
                 <a href="tel:+919390370782" className="hover:text-primary transition-colors">+91 93903 70782</a>
               </li>
               <li className="flex items-start gap-2">
+                <91 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                 <a href="mailto:bonephysiotherapy@gmail.com" className="hover:text-primary break-all transition-colors">bonephysiotherapy@gmail.com</a>
               </li>
