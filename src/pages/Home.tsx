@@ -340,13 +340,13 @@ export default function HomePage() {
           <div className="relative flex items-center">
             
             {/* Desktop Navigation Buttons */}
-            <button 
+            {/* <button 
               onClick={prevDoctor}
               className="absolute -left-4 z-10 hidden lg:flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background shadow-md hover:bg-primary hover:text-white transition-all"
               aria-label="Previous Doctor"
             >
               <ChevronLeft className="h-6 w-6" />
-            </button>
+            </button> */}
             <button 
               onClick={nextDoctor}
               className="absolute -right-4 z-10 hidden lg:flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background shadow-md hover:bg-primary hover:text-white transition-all"
